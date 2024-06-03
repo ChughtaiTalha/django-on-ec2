@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar Example</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'django_app/index_style.css' %}">
+</head>
+<body>
+    <div class="navbar">
+        <a href="{% url 'home-page' %}">Django-EC2</a>
+        <div class="navbar-right">
+            <a href="{% url 'list-nft' %}">List nft</a>
+            <a href="{% url 'nft-create' %}">Create nft</a>
+            <a href="{% url 'nft-create' %}">Update nft</a>
+            <a href="{% url 'nft-create' %}">Delete nft</a>
+        </div>
+    </div>
+    <div class="content">
+        <!-- Your main content goes here -->
+        <p>Welcome to the Django EC2 Project!</p>
+    </div>
+</body>
+</html>

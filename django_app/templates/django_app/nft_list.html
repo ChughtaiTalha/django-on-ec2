@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Table Example</title>
+    {% load static %}
+{#    <link rel="stylesheet" href="{% static 'django_app/index_style.css' %}">#}
+    <link rel="stylesheet" href="{% static 'django_app/list_nft_style.css' %}">
+    <link rel="stylesheet" href="{% static 'django_app/index_style.css' %}">
+
+</head>
+<body>
+    <div class="navbar">
+        <a href="{% url 'home-page' %}">Django-EC2</a>
+        <div class="navbar-right">
+            <a href="{% url 'list-nft' %}">List nft</a>
+            <a href="{% url 'nft-create' %}">Create nft</a>
+            <a href="{% url 'nft-create' %}">Update nft</a>
+            <a href="{% url 'nft-create' %}">Delete nft</a>
+        </div>
+    </div>
+
+    <div class="table-container">
+        <table id="myTable">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Image</th>
+                    <th>Created at</th>
+                    <th>Updated at</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for nft in nfts %}
+            <tr>
+                <td>{{ nft.name }}</td>
+                <td>${{ nft.price }}</td>
+                <td>
+                    {% if nft.image %}
+                    <img src="{{ nft.image.url }}" alt="{{ nft.name }}" width="100">
+{#                    <p>URL: {{ nft.image.url }}</p>#}
+                    {% else %}
+                    No Image
+                    {% endif %}
+                </td>
+                <td>{{ nft.created_at }}</td>
+                <td>{{ nft.updated_at }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
